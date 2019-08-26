@@ -5,10 +5,10 @@ using System.Text;
 
 namespace DAL.Entities
 {
-    public class BaseEntity
+    public class BaseEntity<TKey>
     {
         [Required]
         [Key]
-        public int Id { get; set; }
+        public virtual TKey Id { get; set; }
     }
 }

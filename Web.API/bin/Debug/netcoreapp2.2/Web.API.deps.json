@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v2.2": {
       "Web.API/1.0.0": {
         "dependencies": {
+          "BL": "1.0.0",
           "DAL": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
@@ -661,6 +662,17 @@
       },
       "System.Threading.Tasks.Extensions/4.5.2": {},
       "System.ValueTuple/4.5.0": {},
+      "BL/1.0.0": {
+        "dependencies": {
+          "DAL": "1.0.0"
+        },
+        "runtime": {
+          "BL.dll": {}
+        },
+        "compile": {
+          "BL.dll": {}
+        }
+      },
       "DAL/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.2.4",
@@ -3870,6 +3882,11 @@
       "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "path": "system.valuetuple/4.5.0",
       "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "DAL/1.0.0": {
       "type": "project",

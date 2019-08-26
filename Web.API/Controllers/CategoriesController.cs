@@ -52,7 +52,7 @@ namespace Web.API.Controllers
         {
             var command = new UpdateCategoryCommand(category.Id, category.Title, category.Description);
 
-            _commandHandler.Execute(command);
+            _commandHandler.Handle(command);
 
             return Ok();
         }
@@ -63,7 +63,7 @@ namespace Web.API.Controllers
         {
             var command = new CreateCategoryCommand(category.Id, category.Title, category.Description);
 
-            _commandHandler.Execute(command);
+            _commandHandler.Handle(command);
 
             return Ok();
         }
@@ -74,7 +74,7 @@ namespace Web.API.Controllers
         {
             var command = new DeleteCategoryCommand(id);
 
-            _commandHandler.Execute(command);
+            _commandHandler.Handle(command);
 
             return Ok();
         }

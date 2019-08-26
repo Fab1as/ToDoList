@@ -1,13 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DAL
 {
     public interface IUnitOfWork : IDisposable
     {
-        AppDbContext Context { get; }
-        void Commit();
+        IRepository<Category> CategoryRepository { get; }
+        IRepository<ToDoItem> ToDoItemRepository { get; }
+        Task Commit();
     }
 }

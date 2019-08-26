@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DAL.Entities;
+using DAL.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,17 +8,22 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
-        public AppDbContext Context { get; }
+        private readonly AppDbContext _context;
 
-        public UnitOfWork(AppDbContext context)
+        //я хотел бы избежать в данном случае лишней по-моему мнению абстракции в виде репозиториев,
+        //но иначе пришлось бы делать контекст публичным, что не есть хорошо
+        public IRepository<Category> CategoryRepository => new CategoryRepository(_context);
+        public IRepository<ToDoItem> ToDoItemRepository => new ToDoItemRepository(_context);
+
+        public UnitOfWork(AppDbContext dbContext)
         {
-            Context = context;
+            _context = dbContext;
         }
-        public void Commit()
+        public Task Commit()
         {
-            Context.SaveChangesAsync();
+            return _context.SaveChangesAsync();
         }
 
         private bool disposed = false;
@@ -27,7 +34,7 @@ namespace DAL
             {
                 if (disposing)
                 {
-                    Context.Dispose();
+                    _context.Dispose();
                 }
             }
             this.disposed = true;

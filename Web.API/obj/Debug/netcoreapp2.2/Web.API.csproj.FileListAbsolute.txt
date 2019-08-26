@@ -15,3 +15,5 @@ D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\DAL.pdb
 D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.csproj.CopyComplete
 D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.dll
 D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.pdb
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\BL.dll
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\BL.pdb

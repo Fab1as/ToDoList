@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BL.CommandHandlers
 {
@@ -20,7 +21,7 @@ namespace BL.CommandHandlers
             _uow = uow;
         }
 
-        public void Execute(CreateToDoItemCommand message)
+        public Task Handle(CreateToDoItemCommand message)
         {
             var toDoItem = new ToDoItem() {
                 Id = message.Id,
@@ -28,27 +29,30 @@ namespace BL.CommandHandlers
                 Description = message.Description,
                 CategoryId = message.CategoryId,
                 DueTo = message.DueTo};
-            _uow.Context.Tasks.AddAsync(toDoItem);
-            _uow.Commit();
+            _uow.ToDoItemRepository.Create(toDoItem);
+            return _uow.Commit();
         }
 
-        public async void Execute(DeleteToDoItemCommand message)
+        public async Task Handle(DeleteToDoItemCommand message)
         {
-            var toDoItem = await _uow.Context.Tasks.FirstOrDefaultAsync(x => x.Id == message.Id);
+            var toDoItem = await _uow.ToDoItemRepository.Get(message.Id);
             if (toDoItem == null) throw new ArgumentNullException();
-            _uow.Context.Tasks.Remove(toDoItem);
-            _uow.Commit();
+            _uow.ToDoItemRepository.Delete(toDoItem);
+            await _uow.Commit();
         }
 
-        public async void Execute(UpdateToDoItemCommand message)
+        public async Task Handle(UpdateToDoItemCommand message)
         {
-            var toDoItem = await _uow.Context.Tasks.FirstOrDefaultAsync(x => x.Id == message.Id);
-            if (toDoItem == null) throw new ArgumentNullException();
-            toDoItem.Title = message.Title;
-            toDoItem.CategoryId = message.CategoryId;
-            toDoItem.DueTo = message.DueTo;
-            toDoItem.Description = message.Description;
-            _uow.Commit();
+            var toDoItem = new ToDoItem()
+            {
+                Id = message.Id,
+                CategoryId = message.CategoryId,
+                Description = message.Description,
+                Title = message.Title,
+                DueTo = message.DueTo
+            };
+            
+            await _uow.Commit();
         }
     }
 }

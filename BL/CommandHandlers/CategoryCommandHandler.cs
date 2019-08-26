@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BL.CommandHandlers
 {
@@ -20,28 +21,27 @@ namespace BL.CommandHandlers
             _uow = uow;
         }
 
-        public void Execute(CreateCategoryCommand message)
+        public Task Handle(CreateCategoryCommand message)
         {
             var category = new Category() { Id = message.Id, Title = message.Title, Description = message.Description };
-            _uow.Context.Categories.AddAsync(category);
-            _uow.Commit();
+            _uow.CategoryRepository.Create(category);
+            return _uow.Commit();
         }
 
-        public async void Execute(DeleteCategoryCommand message)
+        public async Task Handle(DeleteCategoryCommand message)
         {
-            var category = await _uow.Context.Categories.FirstOrDefaultAsync(x => x.Id == message.Id);
+            var category = await _uow.CategoryRepository.Get(message.Id);
             if (category == null) throw new ArgumentNullException();
-            _uow.Context.Categories.Remove(category);
-            _uow.Commit();
+            _uow.CategoryRepository.Delete(category);
+
+            await _uow.Commit();
         }
 
-        public async void Execute(UpdateCategoryCommand message)
+        public async Task Handle(UpdateCategoryCommand message)
         {
-            var category = await _uow.Context.Categories.FirstOrDefaultAsync(x => x.Id == message.Id);
-            if (category == null) throw new ArgumentNullException();
-            category.Title = message.Title;
-            category.Description = message.Description;
-            _uow.Commit();
+            var category = new Category() { Id = message.Id, Description = message.Description, Title = message.Title };
+            await _uow.CategoryRepository.Update(category);
+            await _uow.Commit();
         }
     }
 }
