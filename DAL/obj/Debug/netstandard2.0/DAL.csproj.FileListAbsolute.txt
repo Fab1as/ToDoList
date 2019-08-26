@@ -1,0 +1,9 @@
+D:\Projects\VS\ToDoList\DAL\bin\Debug\netstandard2.0\DAL.deps.json
+D:\Projects\VS\ToDoList\DAL\bin\Debug\netstandard2.0\DAL.dll
+D:\Projects\VS\ToDoList\DAL\obj\Debug\netstandard2.0\DAL.csprojAssemblyReference.cache
+D:\Projects\VS\ToDoList\DAL\obj\Debug\netstandard2.0\DAL.csproj.CoreCompileInputs.cache
+D:\Projects\VS\ToDoList\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfoInputs.cache
+D:\Projects\VS\ToDoList\DAL\obj\Debug\netstandard2.0\DAL.AssemblyInfo.cs
+D:\Projects\VS\ToDoList\DAL\bin\Debug\netstandard2.0\DAL.pdb
+D:\Projects\VS\ToDoList\DAL\obj\Debug\netstandard2.0\DAL.dll
+D:\Projects\VS\ToDoList\DAL\obj\Debug\netstandard2.0\DAL.pdb

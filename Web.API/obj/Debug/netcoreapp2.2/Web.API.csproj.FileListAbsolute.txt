@@ -1,0 +1,17 @@
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\Web.API.deps.json
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\Web.API.runtimeconfig.json
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\Web.API.runtimeconfig.dev.json
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\Web.API.dll
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.csprojAssemblyReference.cache
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.csproj.CoreCompileInputs.cache
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.RazorAssemblyInfo.cache
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.RazorAssemblyInfo.cs
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.AssemblyInfoInputs.cache
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.AssemblyInfo.cs
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.RazorTargetAssemblyInfo.cache
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\Web.API.pdb
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\DAL.dll
+D:\Projects\VS\ToDoList\Web.API\bin\Debug\netcoreapp2.2\DAL.pdb
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.csproj.CopyComplete
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.dll
+D:\Projects\VS\ToDoList\Web.API\obj\Debug\netcoreapp2.2\Web.API.pdb
