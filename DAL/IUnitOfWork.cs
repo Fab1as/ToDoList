@@ -10,7 +10,7 @@ namespace DAL
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Category> CategoryRepository { get; }
-        IRepository<ToDoItem> ToDoItemRepository { get; }
+        IItemRepository ToDoItemRepository { get; }
         Task Commit();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BL.Commands.ToDoItem
+namespace BL.Commands.ToDoItems
 {
     public class CreateToDoItemCommand : ICommand
     {

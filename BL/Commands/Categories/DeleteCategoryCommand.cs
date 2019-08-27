@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BL.Commands
+namespace BL.Commands.Categories
 {
     public class DeleteCategoryCommand : ICommand
     {

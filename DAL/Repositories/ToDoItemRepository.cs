@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    class ToDoItemRepository : IRepository<ToDoItem>
+    class ToDoItemRepository : IItemRepository
     {
         private readonly AppDbContext _context;
 
