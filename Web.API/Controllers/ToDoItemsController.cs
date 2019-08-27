@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,6 +8,7 @@ using BL.CommandHandlers;
 using BL.Commands.ToDoItems;
 using BL.Queries.ToDoItems;
 using BL.QueryHandlers;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.API.DTOs;
@@ -20,15 +22,18 @@ namespace Web.API.Controllers
         private readonly ToDoItemCommandHandler _commandHandler;
         private readonly ToDoItemQueryHandler _queryHandler;
         private readonly IMapper _mapper;
+        private readonly IHostingEnvironment _appEnvironment;
 
         public ToDoItemsController(
             ToDoItemCommandHandler commandHandler,
             ToDoItemQueryHandler queryHandler,
-            IMapper mapper)
+            IMapper mapper,
+            IHostingEnvironment appEnvironment)
         {
             _commandHandler = commandHandler;
             _queryHandler = queryHandler;
             _mapper = mapper;
+            _appEnvironment = appEnvironment;
         }
 
         //GET: api/Categories
@@ -98,6 +103,26 @@ namespace Web.API.Controllers
             await _commandHandler.HandleAsync(command);
 
             return Ok();
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile(string path, IFormFile file)
+        {
+            if (!Directory.Exists(path))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(path);
+            }
+
+            if (file != null)
+            {
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyToAsync(fileStream);
+                }
+                return Ok();
+            }
+
+            return StatusCode(500);
         }
     }
 }
