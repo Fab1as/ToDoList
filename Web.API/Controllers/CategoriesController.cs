@@ -8,7 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using DAL;
 using DAL.Entities;
 using BL.CommandHandlers;
-using BL.Commands;
+using BL.Commands.Categories;
+using BL.QueryHandlers;
+using BL.Queries.Categories;
 
 namespace Web.API.Controllers
 {
@@ -16,35 +18,35 @@ namespace Web.API.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
         private readonly CategoryCommandHandler _commandHandler;
+        private readonly CategoryQueryHandler _queryHandler;
 
-        public CategoriesController(IUnitOfWork uow, CategoryCommandHandler commandHandler)
+        public CategoriesController(
+            CategoryCommandHandler commandHandler,
+            CategoryQueryHandler queryHandler)
         {
-            _uow = uow;
             _commandHandler = commandHandler;
+            _queryHandler = queryHandler;
         }
 
-        // GET: api/Categories
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
-        //{
-        //    return await _context.Categories.ToListAsync();
-        //}
+        //GET: api/Categories
+        [HttpGet]
+        public ActionResult<IEnumerable<Category>> GetCategories()
+        {
+            var query = new GetAllCategoriesQuery();
+            var categories = _queryHandler.Handle(query);
+            return Ok(categories);
+        }
 
         // GET: api/Categories/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Category>> GetCategory(int id)
-        //{
-        //    var category = await _context.Categories.FindAsync(id);
+        [HttpGet("{id}")]
+        public ActionResult<Category> GetCategory(int id)
+        {
+            var query = new GetCategoryQuery(id);
+            var category = _queryHandler.Handle(query);
 
-        //    if (category == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return category;
-        //}
+            return Ok(category);
+        }
 
         // PUT: api/Categories/5
         [HttpPut]
@@ -52,7 +54,7 @@ namespace Web.API.Controllers
         {
             var command = new UpdateCategoryCommand(category.Id, category.Title, category.Description);
 
-            _commandHandler.Handle(command);
+            await _commandHandler.Handle(command);
 
             return Ok();
         }
@@ -63,7 +65,7 @@ namespace Web.API.Controllers
         {
             var command = new CreateCategoryCommand(category.Id, category.Title, category.Description);
 
-            _commandHandler.Handle(command);
+            await _commandHandler.Handle(command);
 
             return Ok();
         }
@@ -74,14 +76,9 @@ namespace Web.API.Controllers
         {
             var command = new DeleteCategoryCommand(id);
 
-            _commandHandler.Handle(command);
+            await _commandHandler.Handle(command);
 
             return Ok();
         }
-
-        //private bool CategoryExists(int id)
-        //{
-        //    return _context.Categories.Any(e => e.Id == id);
-        //}
     }
 }

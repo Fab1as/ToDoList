@@ -5,7 +5,7 @@ using DAL.Entities;
 
 namespace BL.Queries.Categories
 {
-    class GetAllCategoriesQuery : IQuery<IEnumerable<Category>>
+    public class GetAllCategoriesQuery : IQuery<IEnumerable<Category>>
     {
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BL.Queries.ToDoItems
 {
-    class GetToDoItemQuery : IQuery<ToDoItem>
+    public class GetToDoItemQuery : IQuery<ToDoItem>
     {
         public int Id { get; }
 

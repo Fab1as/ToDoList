@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BL.QueryHandlers
 {
-    class ToDoItemQueryHandler : 
+    public class ToDoItemQueryHandler : 
         IQueryHandler<GetToDoItemQuery, ToDoItem>,
         IQueryHandler<GetItemsFromCategoryQuery, IEnumerable<ToDoItem>>
     {

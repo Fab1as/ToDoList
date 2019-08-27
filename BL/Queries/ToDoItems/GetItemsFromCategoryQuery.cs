@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BL.Queries.ToDoItems
 {
-    class GetItemsFromCategoryQuery : IQuery<IEnumerable<ToDoItem>>
+    public class GetItemsFromCategoryQuery : IQuery<IEnumerable<ToDoItem>>
     {
         public int CategoryId { get; }
 
