@@ -1,25 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Text;
+using static DAL.Entities.ToDoItem;
 
-namespace DAL.Entities
+namespace Web.API.DTOs
 {
-    public class ToDoItem : BaseEntity<int>
+    public class ToDoItemDTO
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Path { get; }
         public int CategoryId { get; set; }
         public DateTime DueTo { get; set; }
         public StatusEnum Status { get; set; }
-
-        public enum StatusEnum
-        {
-            BackLog = 0,
-            InProgress = 1,
-            Done = 2
-        }
     }
 }

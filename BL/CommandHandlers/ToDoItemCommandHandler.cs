@@ -21,7 +21,7 @@ namespace BL.CommandHandlers
             _uow = uow;
         }
 
-        public Task Handle(CreateToDoItemCommand message)
+        public Task HandleAsync(CreateToDoItemCommand message)
         {
             var toDoItem = new ToDoItem() {
                 Id = message.Id,
@@ -33,7 +33,7 @@ namespace BL.CommandHandlers
             return _uow.Commit();
         }
 
-        public async Task Handle(DeleteToDoItemCommand message)
+        public async Task HandleAsync(DeleteToDoItemCommand message)
         {
             var toDoItem = await _uow.ToDoItemRepository.Get(message.Id);
             if (toDoItem == null) throw new ArgumentNullException();
@@ -41,7 +41,7 @@ namespace BL.CommandHandlers
             await _uow.Commit();
         }
 
-        public async Task Handle(UpdateToDoItemCommand message)
+        public async Task HandleAsync(UpdateToDoItemCommand message)
         {
             var toDoItem = new ToDoItem()
             {

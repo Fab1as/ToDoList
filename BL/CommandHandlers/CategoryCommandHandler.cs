@@ -21,14 +21,14 @@ namespace BL.CommandHandlers
             _uow = uow;
         }
 
-        public Task Handle(CreateCategoryCommand message)
+        public Task HandleAsync(CreateCategoryCommand message)
         {
             var category = new Category() { Id = message.Id, Title = message.Title, Description = message.Description };
             _uow.CategoryRepository.Create(category);
             return _uow.Commit();
         }
 
-        public async Task Handle(DeleteCategoryCommand message)
+        public async Task HandleAsync(DeleteCategoryCommand message)
         {
             var category = await _uow.CategoryRepository.Get(message.Id);
             if (category == null) throw new ArgumentNullException();
@@ -37,7 +37,7 @@ namespace BL.CommandHandlers
             await _uow.Commit();
         }
 
-        public async Task Handle(UpdateCategoryCommand message)
+        public async Task HandleAsync(UpdateCategoryCommand message)
         {
             var category = new Category() { Id = message.Id, Description = message.Description, Title = message.Title };
             await _uow.CategoryRepository.Update(category);
