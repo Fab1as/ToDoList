@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BL
+namespace BL.Interfaces
 {
     public interface ICommand
     {

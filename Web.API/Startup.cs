@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using DAL;
 using AutoMapper;
+using BL.CommandHandlers;
+using BL.QueryHandlers;
+using DAL.Interfaces;
 
 namespace Web.API
 {
@@ -41,6 +44,11 @@ namespace Web.API
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+            services.AddScoped<CategoryCommandHandler>();
+            services.AddScoped<CategoryQueryHandler>();
+            services.AddScoped<ToDoItemCommandHandler>();
+            services.AddScoped<ToDoItemQueryHandler>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -58,6 +66,10 @@ namespace Web.API
                 app.UseHsts();
             }
 
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
             app.UseHttpsRedirection();
             app.UseMvc();
         }

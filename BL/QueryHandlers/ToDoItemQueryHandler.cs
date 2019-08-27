@@ -1,6 +1,8 @@
-﻿using BL.Queries.ToDoItems;
+﻿using BL.Interfaces;
+using BL.Queries.ToDoItems;
 using DAL;
 using DAL.Entities;
+using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

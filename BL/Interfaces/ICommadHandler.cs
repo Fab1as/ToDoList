@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
+namespace BL.Interfaces
 {
     public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {

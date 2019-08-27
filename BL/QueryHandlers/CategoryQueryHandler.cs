@@ -1,6 +1,8 @@
-﻿using BL.Queries.Categories;
+﻿using BL.Interfaces;
+using BL.Queries.Categories;
 using DAL;
 using DAL.Entities;
+using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 
